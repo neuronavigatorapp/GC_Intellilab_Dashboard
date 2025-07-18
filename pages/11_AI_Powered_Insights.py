@@ -1,23 +1,21 @@
-# pages/11_AI_Powered_Insights.py
-
 import streamlit as st
-from ai_modules.ollama_gc import ask_ollama
+from ai_modules.diagnostic_llm import ask_diagnostic, build_gc_context
 
-st.set_page_config(page_title="AI-Powered GC Insights", layout="wide")
-st.title("🤖 AI-Powered GC Insights")
+st.set_page_config(page_title="🧠 GC AI Assistant", layout="wide")
+st.title("🧠 GC Diagnostic Assistant (LLM)")
 
-st.write("""
-This page provides intelligent AI-driven insights for your GC data.  
-Ask questions related to GC troubleshooting, method optimization, or general chromatographic data interpretation.
-""")
+# 1️⃣ Input Serial + Context
+serial_input = st.text_input("Enter Instrument Serial Number (optional for auto context)")
+custom_context = st.text_area("Add additional notes or symptoms (optional)", height=100)
+question = st.text_input("What do you want help with?")
+submit = st.button("Ask AI")
 
-user_question = st.text_area("Ask the AI about your GC data:", height=150)
+# 2️⃣ Generate Combined Context
+if submit and question:
+    with st.spinner("Thinking..."):
+        auto_context = build_gc_context(serial_input) if serial_input else ""
+        full_context = f"{auto_context}\n\n{custom_context}".strip()
+        response = ask_diagnostic(question, full_context)
 
-if st.button("Get AI Response"):
-    if user_question.strip() == "":
-        st.warning("Please enter a question or request.")
-    else:
-        with st.spinner("Thinking..."):
-            ai_response = ask_ollama(user_question)
-            st.write("### AI Response:")
-            st.success(ai_response)
+    st.subheader("💬 AI Response")
+    st.markdown(f"```markdown\n{response}\n```")
