@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from db_models_inventory import GCConsumable, Base
+
+# ✅ Fixed module import path
+from models.db_models_inventory import GCConsumable, Base
 
 # 1️⃣ Connect to DB
 DATABASE_PATH = "sqlite:///./data/shared_files/intellilab_gc.db"
@@ -11,7 +13,67 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # 2️⃣ Page Setup
-st.set_page_config(page_title="📦 Inventory Manager", layout="wide")
+st.set_page_config(page_title="📦 Inventory Manager", layout="centered")
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("📦 GC Consumable Inventory")
 
 # 3️⃣ Add Consumable Form

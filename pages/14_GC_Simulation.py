@@ -11,7 +11,27 @@ from utils.retention_model import (
 from utils.pdf_exporter import generate_retention_pdf
 
 # 2️⃣ Page Setup
-st.set_page_config(page_title="🧪 GC Simulator", layout="wide")
+st.set_page_config(page_title="🧪 GC Simulator", layout="centered")
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("🧪 GC Retention Simulator with Method-Aware Compounds")
 
 # 3️⃣ GC Method & Parameters Input Form

@@ -4,7 +4,27 @@ import plotly.graph_objects as go
 import requests
 
 # Page configuration
-st.set_page_config(page_title="GC Sandbox Simulation", layout="wide")
+st.set_page_config(page_title="GC Sandbox Simulation", layout="centered")
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("🧪 GC Sandbox: AI-Driven Diagnostics")
 
 # Sidebar: GC Simulation Parameters

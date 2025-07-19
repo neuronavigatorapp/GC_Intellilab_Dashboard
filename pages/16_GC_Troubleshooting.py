@@ -18,7 +18,27 @@ GC_FAULTS = {
 }
 
 # 3️⃣ Setup page
-st.set_page_config(page_title="🔧 GC Troubleshooting Viewer", layout="wide")
+st.set_page_config(page_title="🔧 GC Troubleshooting Viewer", layout="centered")
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("🔧 GC Fault Simulator: Detector-Aware Chromatograms")
 
 # 4️⃣ Detector & fault selection

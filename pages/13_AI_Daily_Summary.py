@@ -4,7 +4,27 @@ from datetime import datetime
 from sqlalchemy import create_engine
 from ai_modules.diagnostic_llm import ask_diagnostic
 
-st.set_page_config(page_title="📊 Daily GC Summary", layout="wide")
+st.set_page_config(page_title="📊 Daily GC Summary", layout="centered")
+
+st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 1.5rem;
+    }
+    label, textarea, input, select {
+        font-size: 0.95rem !important;
+    }
+    @media screen and (max-width: 600px) {
+        h1, h2, h3 {
+            font-size: 1.4rem !important;
+        }
+        button[kind="primary"] {
+            font-size: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("📊 GC System Summary & AI Alert Review")
 
 # 1️⃣ Load DB
